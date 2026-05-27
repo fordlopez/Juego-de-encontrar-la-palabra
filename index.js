@@ -1,40 +1,53 @@
-let boton=document.querySelectorAll(".btnn ")
-let numero=document.querySelectorAll("#numero")
-let reiniciar=document.querySelector("#reiniciar")
-let contador=15
+let botones = document.querySelectorAll(".juego")
+let numero = document.querySelector("#numero")
+let reiniciar = document.querySelector("#reiniciar")
+let contador = 15
+function nombreAlazar() {
 
-boton.forEach(boton => {
+    let dado =
+        Math.floor(Math.random() * botones.length)
+
+    console.log(dado)
+
+    botones[dado].textContent =
+        "Me encontrastes"
+
+
+    numero.textContent = contador
+
+}
+
+botones.forEach(boton => {
+
     boton.addEventListener('click', (event) => {
-if(event.target.textContent == 'Reiniciar el juego'){
+
+        if (contador > 0) {
+
+            boton.classList.add('red')
+
+            contador--
+
+            numero.textContent = contador
+            if (
+                event.target.textContent
+                == 'Me encontrastes'
+            ) {
+
+                alert("Felicidades ganaste ")
+
+                contador = 0
+            }
+
+        }
+
+    })
+
+})
+
+reiniciar.addEventListener("click", () => {
+
     nombreAlazar()
 
-}else{
-       boton.classList.add('red')
-     contador=contador-1
-     numero.textContent=contador
-     console.log(contador)
-
-}
-  
-    
 })
-}) 
-function nombreAlazar(){
-    
-   
 
- 
-    
-}
-
-
-
-
-
-
-/*    if(event.target.textContent=="1"){
-          n1.value.textContent="el pepe"
-        }
-/*   boton.s */tyle.backgroundColor = 'red'; 
-
- boton.target =classList.add('red')
+nombreAlazar()
